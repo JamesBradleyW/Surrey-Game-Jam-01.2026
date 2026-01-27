@@ -226,8 +226,10 @@ size = Vector2(16, 16)
 
 [node name="Player" type="Node2D" unique_id=1992623733]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1946162602]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1946162602 node_paths=PackedStringArray("jump_buffer_timer", "coyote_timer")]
 script = ExtResource("1_dsx4b")
+jump_buffer_timer = NodePath("JumpBufferTimer")
+coyote_timer = NodePath("CoyoteTimer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1506038796]
 position = Vector2(0, -8)
@@ -237,3 +239,11 @@ script = ExtResource("3_7otbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1429289258]
 shape = SubResource("RectangleShape2D_vs8te")
+
+[node name="JumpBufferTimer" type="Timer" parent="CharacterBody2D" unique_id=1443850631]
+wait_time = 0.08
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="CharacterBody2D" unique_id=317896914]
+wait_time = 0.04
+one_shot = true
