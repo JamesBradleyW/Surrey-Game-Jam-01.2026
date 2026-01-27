@@ -1,3 +1,26 @@
 # Godot 4+ specific ignores
 .godot/
+*.import
+export.cfg
+export_presets.cfg
+import/
 /android/
+
+# User-specific
+*.user
+*.userprefs
+settings/
+
+# Build outputs
+exports/
+build/
+bin/
+*.exe
+*.apk
+*.app
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
