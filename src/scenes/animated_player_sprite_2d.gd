@@ -1,11 +1,27 @@
 extends AnimatedSprite2D
 
+func _ready():
+	play("idle")  # Start with idle animation#
+	animation_finished.connect(_on_animation_finished)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _process(_delta):
+	# Example animation control
+	if Input.is_action_pressed("right"):
+		play("run")
+		flip_h = false
+	elif Input.is_action_pressed("left"):
+		play("run")
+		flip_h = true
+	else:
+		play("idle")
+	
+	if Input.is_action_just_pressed("attack"):
+		play("attack")
 
+	if Input.is_action_just_pressed("take_damage"):
+		play("hit")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_animation_finished():
+	if animation in ["attack", "hit"]:
+		play("idle")  # Return to idle after attack/hit
+	# Death animation typically doesn't transition back
