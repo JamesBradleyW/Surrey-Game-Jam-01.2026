@@ -14,11 +14,23 @@ config/name="GameJam"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=256
+window/size/viewport_height=144
+window/size/mode=3
+window/stretch/mode="canvas_items"
+window/stretch/scale=3.0
+window/dpi/allow_hidpi=false
+window/per_pixel_transparency/allowed=true
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true
