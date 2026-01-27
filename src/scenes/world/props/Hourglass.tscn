@@ -41,11 +41,6 @@ region = Rect2(0, 128, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hsdmi"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4vge2")
@@ -75,7 +70,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_f6ptj")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -85,10 +80,7 @@ size = Vector2(11, 18)
 [node name="Hourglass" type="Node2D" unique_id=552101605]
 
 [node name="HourglassItem" type="AnimatedSprite2D" parent="." unique_id=889404387]
-visible = false
 sprite_frames = SubResource("SpriteFrames_hsdmi")
-animation = &"new_animation"
-frame_progress = 0.08697501
 script = ExtResource("2_cnir3")
 
 [node name="Area2D" type="Area2D" parent="HourglassItem" unique_id=652430004]

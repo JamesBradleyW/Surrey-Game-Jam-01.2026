@@ -44,6 +44,14 @@ region = Rect2(96, 96, 48, 32)
 atlas = ExtResource("2_imb2f")
 region = Rect2(144, 96, 48, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiki3"]
+atlas = ExtResource("2_imb2f")
+region = Rect2(0, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6vqo"]
+atlas = ExtResource("2_imb2f")
+region = Rect2(48, 128, 48, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mv3lo"]
 atlas = ExtResource("2_imb2f")
 region = Rect2(0, 0, 48, 32)
@@ -75,14 +83,6 @@ region = Rect2(288, 0, 48, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pxwr"]
 atlas = ExtResource("2_imb2f")
 region = Rect2(336, 0, 48, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eiki3"]
-atlas = ExtResource("2_imb2f")
-region = Rect2(0, 128, 48, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a6vqo"]
-atlas = ExtResource("2_imb2f")
-region = Rect2(48, 128, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xg6hr"]
 atlas = ExtResource("2_imb2f")
@@ -156,6 +156,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_eiki3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6vqo")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mv3lo")
 }, {
 "duration": 1.0,
@@ -180,18 +191,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_0pxwr")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eiki3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a6vqo")
-}],
-"loop": true,
-"name": &"hit",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -232,14 +232,8 @@ script = ExtResource("1_dsx4b")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1506038796]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_6hwbh")
-frame_progress = 0.8682522
+animation = &"idle"
 script = ExtResource("3_7otbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1429289258]
 shape = SubResource("RectangleShape2D_vs8te")
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1927387898]
-zoom = Vector2(0.25, 0.25)
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
