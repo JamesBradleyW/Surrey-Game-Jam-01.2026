@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d2r56ni2itbau"]
 
 [ext_resource type="Texture2D" uid="uid://ch557jbkues6q" path="res://scenes/world/props/HourglassAni.png" id="1_4dvvg"]
-[ext_resource type="Script" uid="uid://dabgv231x6525" path="res://hourglass_item.gd" id="2_rnjyy"]
+[ext_resource type="Script" uid="uid://dabgv231x6525" path="res://scripts/item scripts/hourglass_item.gd" id="2_rnjyy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4vge2"]
 atlas = ExtResource("1_4dvvg")
