@@ -10,6 +10,7 @@ var time_left: float = 0.0
 var running := false
 
 func _ready() -> void:
+	add_to_group("timer_ui")
 	reset(start_seconds)
 	start()
 
@@ -22,6 +23,10 @@ func start() -> void:
 
 func pause() -> void:
 	running = false
+	
+func restart() -> void:
+	reset(start_seconds)
+	start()
 
 func add_time(seconds: float) -> void:
 	time_left = max(time_left + seconds, 0.0)

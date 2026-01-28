@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://jp3gljm1uqgy" path="res://scenes/world/00Atlas.png" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://bajio2xy1txjb" path="res://scenes/actors/player/Player.tscn" id="2_1fp7r"]
 [ext_resource type="PackedScene" uid="uid://d2r56ni2itbau" path="res://scenes/world/props/Hourglass.tscn" id="3_1fp7r"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="3_j2gmx"]
+[ext_resource type="Script" uid="uid://b5j4c3n3hgnkf" path="res://scripts/camera.gd" id="3_j2gmx"]
 [ext_resource type="Texture2D" uid="uid://l62i7qrplo6d" path="res://scenes/world/background/far.png" id="4_bq33v"]
 [ext_resource type="Texture2D" uid="uid://d0qv1vlftk8a8" path="res://scenes/world/background/mid.png" id="5_j2gmx"]
 [ext_resource type="Texture2D" uid="uid://bhhl1i4682blh" path="res://scenes/world/background/close.png" id="6_1yooq"]
@@ -244,6 +244,7 @@ z_index = -10
 texture = ExtResource("7_gb53w")
 
 [node name="TimerUI" parent="." unique_id=1937692526 instance=ExtResource("9_1yooq")]
+start_seconds = 10.0
 
 [node name="CharacterBody2D" parent="." unique_id=674857517 instance=ExtResource("10_gb53w")]
 position = Vector2(-432, -6)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cs4ipm6p3tpk"]
 
-[ext_resource type="Script" uid="uid://r1xfu8cjgb1q" path="res://timer_ui.gd" id="1_ae3ei"]
+[ext_resource type="Script" uid="uid://r1xfu8cjgb1q" path="res://scripts/ui/timer_ui.gd" id="1_ae3ei"]
 
 [node name="TimerUI" type="CanvasLayer" unique_id=1937692526]
 script = ExtResource("1_ae3ei")

@@ -289,7 +289,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rg48k"]
 radius = 53.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=674857517]
+[node name="baseEnemy" type="CharacterBody2D" unique_id=674857517]
 script = ExtResource("1_8yeqh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1740632212]

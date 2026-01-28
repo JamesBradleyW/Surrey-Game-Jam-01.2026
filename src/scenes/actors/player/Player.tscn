@@ -150,7 +150,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c7jgu")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -234,7 +234,9 @@ coyote_timer = NodePath("CoyoteTimer")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1506038796]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_6hwbh")
-animation = &"idle"
+animation = &"death"
+frame = 3
+frame_progress = 1.0
 script = ExtResource("3_7otbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1429289258]
