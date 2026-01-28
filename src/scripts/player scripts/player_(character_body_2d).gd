@@ -12,6 +12,7 @@ extends CharacterBody2D
 # Get the gravity from the project settings
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var facing = 1
 var is_going_up = false
 var is_jumping = false 
 var on_floor_last_frame = false
@@ -70,7 +71,9 @@ func _physics_process(delta):
 
 	# Get input direction
 	var direction = Input.get_axis("left", "right")
-
+	if direction != 0:
+		facing = direction
+		
 # Apply movement
 	if direction != 0:
 		velocity.x = move_toward(velocity.x, direction * speed, acceleration)

@@ -3,10 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://jp3gljm1uqgy" path="res://scenes/world/00Atlas.png" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://bajio2xy1txjb" path="res://scenes/actors/player/Player.tscn" id="2_1fp7r"]
 [ext_resource type="PackedScene" uid="uid://d2r56ni2itbau" path="res://scenes/world/props/Hourglass.tscn" id="3_1fp7r"]
-[ext_resource type="Texture2D" uid="uid://gpb18mnx7fcl" path="res://scenes/world/background/far.png" id="4_bq33v"]
-[ext_resource type="Texture2D" uid="uid://4w1a7ce11uhy" path="res://scenes/world/background/mid.png" id="5_j2gmx"]
-[ext_resource type="Texture2D" uid="uid://hnlxmfpx1aw7" path="res://scenes/world/background/close.png" id="6_1yooq"]
-[ext_resource type="Texture2D" uid="uid://t7wmp1olwcxm" path="res://scenes/world/background/back.png" id="7_gb53w"]
+[ext_resource type="Script" uid="uid://b5j4c3n3hgnkf" path="res://scripts/camera.gd" id="3_j2gmx"]
+[ext_resource type="Texture2D" uid="uid://l62i7qrplo6d" path="res://scenes/world/background/far.png" id="4_bq33v"]
+[ext_resource type="Texture2D" uid="uid://d0qv1vlftk8a8" path="res://scenes/world/background/mid.png" id="5_j2gmx"]
+[ext_resource type="Texture2D" uid="uid://bhhl1i4682blh" path="res://scenes/world/background/close.png" id="6_1yooq"]
+[ext_resource type="Texture2D" uid="uid://bu1n4d88il8jv" path="res://scenes/world/background/back.png" id="7_gb53w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6m72w"]
 texture = ExtResource("1_sl2e5")
@@ -115,8 +116,10 @@ tile_set = SubResource("TileSet_v5dby")
 [node name="Player" parent="." unique_id=1992623733 instance=ExtResource("2_1fp7r")]
 position = Vector2(-41, -9)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=511431502]
+[node name="Camera" type="Camera2D" parent="." unique_id=511431502]
 zoom = Vector2(0.1, 0.1)
+position_smoothing_enabled = true
+script = ExtResource("3_j2gmx")
 
 [node name="Hourglass" parent="." unique_id=552101605 instance=ExtResource("3_1fp7r")]
 
