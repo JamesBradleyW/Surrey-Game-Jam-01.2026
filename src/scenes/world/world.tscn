@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d0qv1vlftk8a8" path="res://scenes/world/background/mid.png" id="5_j2gmx"]
 [ext_resource type="Texture2D" uid="uid://bhhl1i4682blh" path="res://scenes/world/background/close.png" id="6_1yooq"]
 [ext_resource type="Texture2D" uid="uid://bu1n4d88il8jv" path="res://scenes/world/background/back.png" id="7_gb53w"]
+[ext_resource type="PackedScene" uid="uid://cs4ipm6p3tpk" path="res://scenes/world/timer_ui.tscn" id="9_1yooq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6m72w"]
 texture = ExtResource("1_sl2e5")
@@ -214,6 +215,7 @@ texture = ExtResource("4_bq33v")
 
 [node name="Mid" type="Parallax2D" parent="." unique_id=1658951679]
 scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(-17, 18)
 repeat_size = Vector2(592, 0)
 repeat_times = 2
 
@@ -239,3 +241,5 @@ repeat_times = 2
 [node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=600294585]
 z_index = -10
 texture = ExtResource("7_gb53w")
+
+[node name="TimerUI" parent="." unique_id=1937692526 instance=ExtResource("9_1yooq")]
