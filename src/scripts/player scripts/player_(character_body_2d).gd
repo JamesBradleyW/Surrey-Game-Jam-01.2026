@@ -9,95 +9,124 @@ extends CharacterBody2D
 @export var acceleration = 15.0
 @export var friction = 15.0
 
-# Get the gravity from the project settings
+# Gravity
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+# State
 var facing = 1
 var is_going_up = false
-var is_jumping = false 
+var is_jumping = false
 var on_floor_last_frame = false
+
+# Double jump
+var can_double_jump := false
+var has_double_jumped := false
 
 @onready var animated_sprite = $AnimatedSprite2D
 
-func has_just_landed(body: CharacterBody2D):
+
+func timer_active(t: Timer) -> bool:
+	return t != null and not t.is_stopped()
+
+
+func has_just_landed(body: CharacterBody2D) -> bool:
 	return body.is_on_floor() and is_jumping and not on_floor_last_frame
 
-func has_just_stepped_off_ledge(body: CharacterBody2D):
+
+func has_just_stepped_off_ledge(body: CharacterBody2D) -> bool:
 	return not body.is_on_floor() and on_floor_last_frame and not is_jumping
-	
-func is_allowed_to_jump(body, jump_input):
-	return jump_input and (body.is_on_floor() or not coyote_timer.is_stopped())
-	
-func run_jump(body: CharacterBody2D):
+
+
+func is_allowed_to_jump(body: CharacterBody2D, jump_input: bool) -> bool:
+	if not jump_input:
+		return false
+
+	# Ground or coyote jump
+	if body.is_on_floor() or timer_active(coyote_timer):
+		return true
+
+	# Double jump
+	if can_double_jump and not has_double_jumped:
+		has_double_jumped = true
+		return true
+
+	return false
+
+
+func run_jump(body: CharacterBody2D) -> void:
 	body.velocity.y = jump_velocity
 	is_jumping = true
-	jump_buffer_timer.stop()
-	coyote_timer.stop()
-	
-func handle_jump(body: CharacterBody2D, jump_input: bool):
+	if jump_buffer_timer: jump_buffer_timer.stop()
+	if coyote_timer: coyote_timer.stop()
+
+
+func handle_jump(body: CharacterBody2D, jump_input: bool) -> void:
 	if has_just_landed(body):
 		is_jumping = false
-	
+		has_double_jumped = false
+
 	if is_allowed_to_jump(body, jump_input):
 		run_jump(body)
-		
+
 	handle_jump_buffer(body, jump_input)
 	handle_coyote_time(body)
-	
+
 	is_going_up = body.velocity.y < 0 and not body.is_on_floor()
 	on_floor_last_frame = body.is_on_floor()
-	
+
+
 func handle_jump_buffer(body: CharacterBody2D, jump_input: bool):
-	if jump_input and not body.is_on_floor():
+	if jump_input and not body.is_on_floor() and jump_buffer_timer:
 		jump_buffer_timer.start()
-	
-	if body.is_on_floor() and not jump_buffer_timer.is_stopped():
+
+	if body.is_on_floor() and jump_buffer_timer and timer_active(jump_buffer_timer):
 		run_jump(body)
-		
+
+
 func handle_coyote_time(body: CharacterBody2D):
-	if has_just_stepped_off_ledge(body):
+	if has_just_stepped_off_ledge(body) and coyote_timer:
 		coyote_timer.start()
-		
-	if not coyote_timer.is_stopped() and not is_jumping:
+
+	if coyote_timer and timer_active(coyote_timer) and not is_jumping:
 		body.velocity.y = 0
 
-func _physics_process(delta):
-	# Add gravity every frame
+
+func _physics_process(delta: float) -> void:
+	# Gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Handle jump
+	# Jump handling
 	handle_jump(self, Input.is_action_just_pressed("jump"))
 
-	# Get input direction
+	# Horizontal input
 	var direction = Input.get_axis("left", "right")
 	if direction != 0:
 		facing = direction
-		
-# Apply movement
+
+	# Movement
 	if direction != 0:
 		velocity.x = move_toward(velocity.x, direction * speed, acceleration)
-
-		# Flip sprite based on direction
 		animated_sprite.flip_h = direction < 0
 
-		# Play run animation
 		if is_on_floor():
 			animated_sprite.play("run")
 	else:
-		# Apply friction when no input
 		velocity.x = move_toward(velocity.x, 0, friction)
 
-		# Play idle animation
 		if is_on_floor():
 			animated_sprite.play("idle")
 
-	# Play jump/fall animation
+	# Air animations
 	if not is_on_floor():
 		if velocity.y < 0:
-			animated_sprite.play("jump")  # Add jump animation if you have it
+			animated_sprite.play("jump")
 		else:
-			animated_sprite.play("fall")  # Add fall animation if you have it
+			animated_sprite.play("fall")
 
-	# Move the character
 	move_and_slide()
+
+
+func enable_double_jump() -> void:
+	can_double_jump = true
+	print("Double jump unlocked!")

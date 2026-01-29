@@ -6,32 +6,32 @@ extends AnimatedSprite2D
 var time_passed: float = 0.0
 var start_y: float = 0.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+
+func _ready() -> void:
 	start_y = position.y
 	play("default")
 
-	# Connect area signals
-	$Area2D.body_entered.connect(_on_area_entered)
+	# Connect signals (Godot 4 style)
+	$Area2D.body_entered.connect(_on_body_entered)
 	$Area2D.area_entered.connect(_on_area_entered)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta: float) -> void:
 	time_passed += delta
-
-	# Floating animation
 	position.y = start_y + sin(time_passed * float_speed * PI) * float_height
 
-func _on_body_entered(body):
+
+func _on_body_entered(body: Node) -> void:
+	print("BODY ENTERED:", body, body.name)
 	collect_powerup_check(body)
 
-func _on_area_entered(area):
-	if area.owner:
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.owner != null:
 		collect_powerup_check(area.owner)
 
-func collect_powerup_check(target):
-	# Check if target can collect powerups
-	if target.has_method("collect_powerup"):
-		target.collect_powerup("hourglass")
+
+func collect_powerup_check(target: Node) -> void:
+	# Player pickup
+	if target is CharacterBody2D:
 		queue_free()
