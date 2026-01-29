@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://s0apppotuhta" path="res://scripts/player scripts/player_(character_body_2d).gd" id="1_dsx4b"]
 [ext_resource type="Texture2D" uid="uid://bk6ympsxyx36n" path="res://scenes/actors/player/Thief_anim.png" id="2_imb2f"]
 [ext_resource type="Script" uid="uid://doyf6wvmhmch0" path="res://scripts/player scripts/animated_player_sprite_2d.gd" id="3_7otbr"]
+[ext_resource type="Texture2D" uid="uid://cu0a05jgwop4b" path="res://scenes/actors/player/ThiefMask_anim.png" id="3_imb2f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nnut8"]
 atlas = ExtResource("2_imb2f")
@@ -83,6 +84,58 @@ region = Rect2(288, 0, 48, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pxwr"]
 atlas = ExtResource("2_imb2f")
 region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7otbr"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hwbh"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs8te"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfhuq"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86qw2"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee178"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbx71"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r01j6"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg8uo"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xlsc"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0gu2"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw8hl"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iehuc"]
+atlas = ExtResource("3_imb2f")
+region = Rect2(0, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xg6hr"]
 atlas = ExtResource("2_imb2f")
@@ -196,6 +249,50 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7otbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hwbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs8te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfhuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86qw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee178")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbx71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r01j6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg8uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xlsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0gu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aw8hl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iehuc")
+}],
+"loop": true,
+"name": &"mask",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xg6hr")
 }, {
 "duration": 1.0,
@@ -232,9 +329,8 @@ script = ExtResource("1_dsx4b")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1506038796]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_6hwbh")
-animation = &"death"
-frame = 3
-frame_progress = 1.0
+animation = &"mask"
+frame_progress = 0.22573513
 script = ExtResource("3_7otbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1429289258]

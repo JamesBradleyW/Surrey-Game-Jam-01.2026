@@ -6,6 +6,9 @@ extends CharacterBody2D
 
 @export var speed = 300.0
 @export var jump_velocity = -400.0
+@export var max_air_jumps = 1
+var air_jumps_remaining = 0
+var can_double_jump = false  # Powerup status
 @export var acceleration = 15.0
 @export var friction = 15.0
 
@@ -67,7 +70,10 @@ func handle_jump(body: CharacterBody2D, jump_input: bool) -> void:
 
 	if is_allowed_to_jump(body, jump_input):
 		run_jump(body)
-
+	elif can_double_jump and air_jumps_remaining > 0:
+		run_jump(body)
+		air_jumps_remaining -= 1
+		
 	handle_jump_buffer(body, jump_input)
 	handle_coyote_time(body)
 
@@ -90,13 +96,20 @@ func handle_coyote_time(body: CharacterBody2D):
 	if coyote_timer and timer_active(coyote_timer) and not is_jumping:
 		body.velocity.y = 0
 
+func enable_double_jump():
+	can_double_jump = true
+	max_air_jumps = 1
 
-func _physics_process(delta: float) -> void:
-	# Gravity
+func disable_doube_jump():
+	can_double_jump = false
+	max_air_jumps = 0
+func _physics_process(delta):
+	# Add gravity every frame
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
-	# Jump handling
+	else:
+			air_jumps_remaining = max_air_jumps
+	# Handle jump
 	handle_jump(self, Input.is_action_just_pressed("jump"))
 
 	# Horizontal input
