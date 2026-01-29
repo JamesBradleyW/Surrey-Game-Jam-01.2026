@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://j2oj173vq3lv"]
 
-[ext_resource type="Script" uid="uid://cvp575ism80rs" path="res://character_body_2d.gd" id="1_8yeqh"]
+[ext_resource type="Script" uid="uid://cvp575ism80rs" path="res://scripts/player scripts/enemy_body_2d.gd" id="1_8yeqh"]
 [ext_resource type="Texture2D" uid="uid://75lf0h18jvd4" path="res://scenes/actors/enemy/Sword.png" id="2_jvjnp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yje1j"]
