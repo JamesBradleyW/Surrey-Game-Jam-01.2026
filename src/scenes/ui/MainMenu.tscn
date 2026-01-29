@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://jjuv0mx20gr8"]
+
+[ext_resource type="Script" uid="uid://gvqwbhrmowxc" path="res://scripts/ui/main_menu.gd" id="1_vjtqc"]
+
+[sub_resource type="Theme" id="Theme_6jbdy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iwbf0"]
+
+[node name="MainMenu" type="Control" unique_id=1221934139]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.32926616, 0.38055825)
+theme = SubResource("Theme_6jbdy")
+script = ExtResource("1_vjtqc")
+
+[node name="Title" type="Label" parent="." unique_id=122891103]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 144.0
+scale = Vector2(1.0102453, 0.96587133)
+text = "GAME NAME"
+label_settings = SubResource("LabelSettings_iwbf0")
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1414420430]
+layout_mode = 0
+offset_right = 255.0
+offset_bottom = 144.0
+
+[node name="MainButtons" type="VBoxContainer" parent="CenterContainer" unique_id=1968980233]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PLAY" type="Button" parent="CenterContainer/MainButtons" unique_id=1850748563]
+layout_mode = 2
+text = "PLAY"
+
+[node name="Settings" type="Button" parent="CenterContainer/MainButtons" unique_id=466187006]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="Exit" type="Button" parent="CenterContainer/MainButtons" unique_id=445306178]
+layout_mode = 2
+text = "EXIT"
+
+[connection signal="pressed" from="CenterContainer/MainButtons/PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/MainButtons/Exit" to="." method="_on_exit_pressed"]
